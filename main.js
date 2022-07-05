@@ -35,6 +35,35 @@ function saveTasks(e){
 
 }
 
+function setStatusClosed(id){
+    let tasks = JSON.parse(localStorage.getItem('tasks'));
+
+    for (let i = 0; i < tasks.length; i++){
+        if(tasks[i].id ==id) {
+            tasks[i].status = 'CLosed';
+        }
+    }
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    fetchTasks();
+}
+
+function deleteTask(id) {
+    let tasks = JSON.parse(localStorage.getItem('tasks'));
+
+    for (let i = 0; i < tasks.length; i++){
+        if(tasks[i].id ==id) {
+            tasks.splice(i, 1);
+        }
+    }
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    fetchTasks();
+}
+
+
 function fetchTasks() {
    let tasks = JSON.parse(localStorage.getItem('tasks'));
     let tasksList = document.getElementById('tasksList');
@@ -53,7 +82,7 @@ function fetchTasks() {
                                 '<h6> Tasks Id: ' + id + '</h6>'+ 
                                 '<p><span class="label label-info">' + status + '</span></p>'+
                                 '<h3>' + desc + '</h3>'+
-                                '<p><span class="glyphicon glyphicon-time"></span>' + statusTask + '</p>' + 
+                                
                                 '<p><span class="glyphicon glyphicon-user"></span>' + assignedTo + '</p>' + 
                                 '<a href="#" onclick="setStatusClosed(\'' +id+ '\')" class="btn btn-warning">Close</a>'+
                                 '<a href="#" onclick="deleteTask(\'' +id+ '\')" class="btn btn-danger">Delete</a>'+
