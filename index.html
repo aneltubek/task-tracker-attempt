@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>App</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
+</head>
     
 
 </head>
 <body>
+    <span id="dateObject"> </span>
     <div class="container">
         <h1>Task Tracker</h1>
         <div class="jumbotron">
             <h3>Add new Task</h3>
             <form id="issueInputForm">
-                <div class="form-group">
-                    <label for="issueDescriptionInput">Description</label>
-                    <input type="text" class="form-control" id="issueDescriptionInput" placeholder="Describe Task...">
-                </div>
                 <div class="form-group">
                     <label for="issueNameInput">Name</label>
                     <input type="text" class="form-control" id="issueNameInput" placeholder="Describe Name">
@@ -26,9 +26,14 @@
                 <div class="form-group">
                     <label for="issueDescriptionInput">Description</label>
                     <input type="text" class="form-control" id="issueDescriptionInput" placeholder="Describe Task...">
-                                    <div class="form-group">
-                    <label for="issueDescriptionInput">Description</label>
-                    <input type="text" class="form-control" id="issueDescriptionInput" placeholder="Describe Task...">
+                </div>
+                <div class="form-group">
+                    <label for="issueAssignedToInput">Assigned To:</label>
+                    <input type="text" class="form-control" id="issueDescriptionInput" placeholder="Assigned To...">
+                </div>
+                <div class="form-group">
+                    <label for="dueDate">Due Date:</label>
+                    <input type="date" class="form-control" id="dueDate"/>
                 </div>
                 <div class="form-group">
                     <label for="issueStatusInput">Status</label>
@@ -38,18 +43,36 @@
                         <option value="done">Done</option>
                     </select>
                 </div>
-
-                </div>
             </form>
         </div>
     </div>
 
 
-    <script src="https://chancejs.com/chance.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-      <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="chance.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="main.js"></script>
   
+<!---display date and time--->
+<script>
+    function display_c(){
+    let refresh=1000; // Refresh rate in milli seconds
+    mytime=setTimeout('displayDate()',refresh)
+    }
+
+
+    function displayDate() {
+      let currentDate = new Date();
+      let todayDate = (`${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`);
+      todayDate = "Date: " + todayDate + " Time: " + currentDate.getHours( )+ ":" +  currentDate.getMinutes() + ":" +  currentDate.getSeconds();
+      document.getElementById('dateObject').innerHTML = todayDate;   
+      display_c();
+      }
+
+      displayDate();
+      </script>
+
+
 </body>
 </html>
