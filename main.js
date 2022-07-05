@@ -87,7 +87,7 @@ function fetchTasks() {
                                 '<h2> Name: ' + tname + '</h2>' + 
                                 '<h5> Description: ' + desc + '</h5>'+ 
                                 '<p> Status: ' + taskSt + '</p>'+
-                                '<p><span class="glyphicon glyphicon-time"></span>  Due Date: ' + dueDate + '</p>' + 
+                                '<p style="color: green; font-weight: bold"><span class="glyphicon glyphicon-time"></span>  Due Date: ' + dueDate + '</p>' + 
                                 '<p><span class="glyphicon glyphicon-user"></span> ' + assignedTo + '</p>' + 
                                 '<a href="#" onclick="setStatusClosed(\'' +id+ '\')" class="btn btn-warning">Close</a>'+ '<span> </span>' +
                                 '<a href="#" onclick="deleteTask(\'' +id+ '\')" class="btn btn-danger">Delete</a>'+
