@@ -1,6 +1,7 @@
 document.getElementById('issueInputForm').addEventListener('submit', saveTasks);
 
 function saveTasks(e){
+    let taskName = document.getElementById('issueNameInput').value;
     let taskDesc = document.getElementById('issueDescriptionInput').value;
     let taskStatus = document.getElementById('issueStatusInput').value;
     let taskassignedTo = document.getElementById('issueAssignedToInput').value;
@@ -10,6 +11,7 @@ function saveTasks(e){
 
     let task = {
         id: taskId,
+        tname: taskName,
         description: taskDesc,
         taskSt: taskStatus,
         assignedTo: taskassignedTo,
@@ -72,6 +74,7 @@ function fetchTasks() {
 
     for (let i = 0; i < tasks.length; i++) {
         let id = tasks[i].id;
+        let tname = tasks[i].tname;
         let desc = tasks[i].description;
         let taskSt = tasks[i].taskSt;
         let assignedTo = tasks[i].assignedTo;
@@ -80,11 +83,12 @@ function fetchTasks() {
 
         tasksList.innerHTML += '<div class="well">'+
                                 '<h6> Tasks Id: ' + id + '</h6>'+ 
-                                '<p><span class="label label-info">' + status + '</span></p>'+
-                                '<h3>' + desc + '</h3>'+ 
+                                '<p><span class="label label-info">' + status + '</span></p>'+ 
+                                '<h2> Name: ' + tname + '</h2>' + 
+                                '<h5> Description: ' + desc + '</h5>'+ 
                                 '<p> Status: ' + taskSt + '</p>'+
                                 '<p><span class="glyphicon glyphicon-time"></span>  Due Date: ' + dueDate + '</p>' + 
-                                '<p><span class="glyphicon glyphicon-user"></span>' + assignedTo + '</p>' + 
+                                '<p><span class="glyphicon glyphicon-user"></span> ' + assignedTo + '</p>' + 
                                 '<a href="#" onclick="setStatusClosed(\'' +id+ '\')" class="btn btn-warning">Close</a>'+ '<span> </span>' +
                                 '<a href="#" onclick="deleteTask(\'' +id+ '\')" class="btn btn-danger">Delete</a>'+
                                 '</div>';
