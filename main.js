@@ -6,7 +6,7 @@ function saveTasks(e){
     let taskassignedTo = document.getElementById('issueAssignedToInput').value;
     let taskDueDate = document.getElementById('dueDate').value;
     let taskId = chance.guid();
-    let tasksStatus = 'Open';
+    let tasksStatus = 'In progress';
 
     let task = {
         id: taskId,
@@ -40,7 +40,7 @@ function setStatusClosed(id){
 
     for (let i = 0; i < tasks.length; i++){
         if(tasks[i].id ==id) {
-            tasks[i].status = 'CLosed';
+            tasks[i].status = 'Done';
         }
     }
 
@@ -73,7 +73,7 @@ function fetchTasks() {
     for (let i = 0; i < tasks.length; i++) {
         let id = tasks[i].id;
         let desc = tasks[i].description;
-        let statusTask = tasks[i].statusTask;
+        let taskSt = tasks[i].taskSt;
         let assignedTo = tasks[i].assignedTo;
         let dueDate = tasks[i].dueDate;
         let status = tasks[i].status;
@@ -81,10 +81,11 @@ function fetchTasks() {
         tasksList.innerHTML += '<div class="well">'+
                                 '<h6> Tasks Id: ' + id + '</h6>'+ 
                                 '<p><span class="label label-info">' + status + '</span></p>'+
-                                '<h3>' + desc + '</h3>'+
-                                
+                                '<h3>' + desc + '</h3>'+ 
+                                '<p> Status: ' + taskSt + '</p>'+
+                                '<p><span class="glyphicon glyphicon-time"></span>  Due Date: ' + dueDate + '</p>' + 
                                 '<p><span class="glyphicon glyphicon-user"></span>' + assignedTo + '</p>' + 
-                                '<a href="#" onclick="setStatusClosed(\'' +id+ '\')" class="btn btn-warning">Close</a>'+
+                                '<a href="#" onclick="setStatusClosed(\'' +id+ '\')" class="btn btn-warning">Close</a>'+ '<span> </span>' +
                                 '<a href="#" onclick="deleteTask(\'' +id+ '\')" class="btn btn-danger">Delete</a>'+
                                 '</div>';
 
